@@ -1,5 +1,3 @@
-import statistics as st
-
 def binmedian_compute(x, k):
     """
     binmedian algorithm based exactly on https://www.stat.cmu.edu/~ryantibs/median/binmedian.c
@@ -7,8 +5,8 @@ def binmedian_compute(x, k):
     generalized to even and odd input. More work/refactoring to be done when I have time.
     """
     n = len(x)
-    mu = st.mean(x)
-    sigma = st.stdev(x)
+    mu = sum(x)/n
+    sigma = (sum([(i-mu)**2 for i in x])/(n-1))**.5
 
     # Bin x across the interval [mu-sigma, mu+sigma]
     bottomcount = 0
